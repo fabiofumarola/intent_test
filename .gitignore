@@ -1,3 +1,8 @@
 .DS_store
 
-## add the other files to ignore
+# PyCharm config file
+.idea
+
+__pycache__
+
+.ipynb_checkpoints
