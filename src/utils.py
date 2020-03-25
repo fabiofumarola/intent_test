@@ -11,9 +11,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import OneHotEncoder
 
 
-# TODO: move here log messages, removing prints?
-
-
 def load_data(file_path):
     return pd.read_csv(file_path, encoding='utf-8', sep=';')
 
@@ -50,7 +47,7 @@ def clean_sentence(sentence,
     clean = re.sub(r'[{}]'.format(clean_policy), " ", sentence)
 
     # tokenize
-    tokens = word_tokenize(clean)  # needs downloaded punkt
+    tokens = word_tokenize(clean)
 
     # remove stopwords
     tokens = filter(lambda x: x not in stopwords, tokens)

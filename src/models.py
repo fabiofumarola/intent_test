@@ -1,11 +1,7 @@
 import numpy as np
-import re
 import nltk
-from nltk.tokenize import word_tokenize
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Embedding, Bidirectional, Dense, Dropout, LSTM
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from src.utils import load_data, load_tokenizer, clean_sentences, \
     get_words_max_length, clean_sentence, encode_sentences, pad_sentences
@@ -115,39 +111,3 @@ class IntentClassifier(object):
         predicted_intent = self._output_label_tokenizer.index_word[intent_index]
 
         return predicted_intent, confidence
-
-    # def clean_sentences(self, sentences):
-    #     words = []
-    #     for s in sentences:
-    #         clean_sentence = self._clean_sentence(s)
-    #         words.append(clean_sentence)
-    #     return words
-
-    # def _pad_doc(self, encoded_doc):
-    #     return pad_sequences(encoded_doc,
-    #                          maxlen=self._max_length,
-    #                          padding='post')
-
-    # def _clean_sentence(self, sentence):
-    #     # removed every punctuation and special characters.
-    #     clean = re.sub(r'[{}]'.format(self._clean_policy), " ", sentence)
-    #
-    #     # tokenize
-    #     tokens = word_tokenize(clean)  # needs downloaded punkt
-    #
-    #     # remove stopwords
-    #     tokens = filter(lambda x: x not in INTENT_CLSF_STOPWORDS, tokens)
-    #
-    #     # lemmatize
-    #     return [self._lemmatizer.lemmatize(i.lower()) for i in tokens]
-
-    # def _create_tokenizer(self, words, filters):
-    #     """Creates a tokenizer objects that encodes all the questions by
-    #     mapping each token to an integer"""
-    #     token = Tokenizer(filters=filters)
-    #     token.fit_on_texts(words)
-    #     return token
-    #
-    # def _get_words_max_length(self, words):
-    #     """Get the length of the maximum length word"""
-    #     return len(max(words, key=len))

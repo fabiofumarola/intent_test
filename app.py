@@ -1,9 +1,3 @@
-# TODO: when running the app load the following resources:
-#  nltk.download('punkt')
-#  nltk.download('wordnet')
-#  nltk.download('stopwords')
-#  load the nn model
-
 from flask import Flask
 from flask_restful import reqparse, Api, Resource
 import nltk

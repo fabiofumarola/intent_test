@@ -21,11 +21,7 @@ RUN apt-get install -y software-properties-common \
  && apt-get install -y python3.6 \
  && update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1 \
  && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
- # Update pip to latest version
- # In theroy this could be done via `pip install --upgrade pip`, yet this breaks the installation: it completes
- # but no other packaes can then added via `pip install`
  && curl https://bootstrap.pypa.io/get-pip.py | python \
- # Cleaning after installations
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
